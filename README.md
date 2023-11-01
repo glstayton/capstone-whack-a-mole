@@ -1,6 +1,6 @@
 # Web Development Certificate Capstone: Whack-a-Mole!
 
-This is my Capstone for my Web Development course - a Whack-a-Mole game! Here is my spin on the timeless classic as a mosquito smacking rampage. Original instructions for the assignment are located in the project-guide.md file. 
+This is my Capstone for my Web Development course - a Whack-a-Mole game! Here is my spin on the timeless classic as a mosquito smacking rampage. Original instructions for the assignment are located in `project-guide.md`. 
 
 ![mosquito-demo](assets/mosquitos-demo.gif)
 
