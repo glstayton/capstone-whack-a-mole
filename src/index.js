@@ -1,17 +1,17 @@
 const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const startButton = document.querySelector('#start');
-// TODO: Add the missing query selectors:
-const score = document.querySelector('#score'); // Use querySelector() to get the score element
-const timerDisplay = document.querySelector('#timer'); // use querySelector() to get the timer element.
+// The below querySelectors have been added to read the score, timer, difficulty, and mute elements.
+const score = document.querySelector('#score'); 
+const timerDisplay = document.querySelector('#timer'); 
 const selection = document.querySelector('#difficulty');
 const muteButton = document.querySelector('.mute');
-
 
 let time = 0;
 let timer;
 let lastHole = 0;
 let points = 0;
+// Difficulty has been modified to start on easy, and the mute variable has been added.
 let difficulty = "easy";
 let muted = 0
 
@@ -23,7 +23,10 @@ let muted = 0
  * will return a random integer between 0 and 10. Calling randomInteger(10,200)
  * will return a random integer between 10 and 200.
  *
+ * This function was originally provided in the starter code.
+ * 
  */
+
 function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -37,14 +40,9 @@ function randomInteger(min, max) {
  * return 1000. If difficulty is set to "hard" it should return a randomInteger between
  * 600 and 1200.
  *
- * Example: 
- * setDelay("easy") //> returns 1500
- * setDelay("normal") //> returns 1000
- * setDelay("hard") //> returns 856 (returns a random number between 600 and 1200).
- *
  */
+
 function setDelay(difficulty) {
-  // TODO: Write your code here.
   let delay = 0
   if (difficulty === "easy") {
     delay = 1500;
@@ -65,13 +63,9 @@ function setDelay(difficulty) {
  * 3. if hole === lastHole then call chooseHole(holes) again.
  * 4. if hole is not the same as the lastHole then keep track of 
  * it (lastHole = hole) and return the hole
- *
- * Example: 
- * const holes = document.querySelectorAll('.hole');
- * chooseHole(holes) //> returns one of the 9 holes that you defined
  */
+
 function chooseHole(holes) {
-  // TODO: Write your code here.
   let holeNum = randomInteger(0,8);
   let hole = holes[holeNum];
   if (hole === lastHole) {
@@ -79,7 +73,7 @@ function chooseHole(holes) {
   }
   lastHole = hole;
   return hole;
-}
+};
 
 /**
 *
@@ -93,24 +87,18 @@ function chooseHole(holes) {
 * return the timeoutId if the game continues or the string "game stopped"
 * if the game is over.
 *
-*  // if time > 0:
-*  //   timeoutId = showUp()
-*  //   return timeoutId
-*  // else
-*  //   gameStopped = stopGame()
-*  //   return gameStopped
-*
+* This code was originally provided with the starter code.
 */
+
 function gameOver() {
-  // TODO: Write your code here
-   if (time > 0) {
+  if (time > 0) {
     let timeoutId = showUp();
     return timeoutId;
-   } else {
+  } else {
     let gameStopped = stopGame();
     return gameStopped;
-   };
-}
+  };
+};
 
 /**
 *
@@ -121,12 +109,13 @@ function gameOver() {
 * to call `showAndHide(hole, delay)`.
 *
 */
+
 function showUp() {
-  let delay = 0; // TODO: Update so that it uses setDelay()
+  let delay = 0;
   delay = setDelay(difficulty);
-  const hole = chooseHole(holes); // 0;  // TODO: Update so that it use chooseHole()
+  const hole = chooseHole(holes);
   return showAndHide(hole, delay);
-}
+};
 
 /**
 *
@@ -136,16 +125,15 @@ function showUp() {
 * the timeoutID
 *
 */
+
 function showAndHide(hole, delay){
-  // TODO: call the toggleVisibility function so that it adds the 'show' class.
   toggleVisibility(hole);
   const timeoutID = setTimeout(() => {
-    // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
-    toggleVisibility(hole);
+     toggleVisibility(hole);
     gameOver();
-  }, delay); // TODO: change the setTimeout delay to the one provided as a parameter
+    }, delay);
   return timeoutID;
-}
+};
 
 /**
 *
@@ -153,11 +141,11 @@ function showAndHide(hole, delay){
 * a given hole. It returns the hole.
 *
 */
+
 function toggleVisibility(hole){
-  // TODO: add hole.classList.toggle so that it adds or removes the 'show' class.
   hole.classList.toggle('show');
   return hole;
-}
+};
 
 /**
 *
@@ -169,12 +157,12 @@ function toggleVisibility(hole){
 * for your implementation:
 *
 */
+
 function updateScore() {
-  // TODO: Write your code here
   points++;
   score.textContent = points;
   return points;
-}
+};
 
 /**
 *
@@ -182,30 +170,30 @@ function updateScore() {
 * the board using `score.textContent = points`. The function should return
 * the points.
 *
+* This was originally provided in the starter code.
+*
 */
+
 function clearScore() {
-  // TODO: Write your code here
-  // points = 0;
-  // score.textContent = points;
   points = 0;
   score.textContent = points;
   return points;
-}
+};
 
 /**
 *
 * Updates the control board with the timer if time > 0
+* This code was provided in the instructions, located in the project-guide.md file.
 *
 */
+
 function updateTimer() {
-  // TODO: Write your code here.
-  // hint: this code is provided to you in the instructions.
   if (time > 0){
     time -= 1;
     timerDisplay.textContent = time;
-  }
+  };
   return time;
-}
+};
 
 /**
 *
@@ -213,11 +201,11 @@ function updateTimer() {
 * the updateTimer function get called. This function is already implemented
 *
 */
+
 function startTimer() {
-  // TODO: Write your code here
   timer = setInterval(updateTimer, 1000);
   return timer;
-}
+};
 
 /**
 *
@@ -226,34 +214,35 @@ function startTimer() {
 * handler (e.g. mole.addEventListener('click', whack)) for each of
 * the moles.
 *
+* A few additions to the original requirements have been made.
+* A splat sound will play if the mute button is toggled off.
+* Additionally, the pointer will animate with a successful swat.
+* See the 'swatter' and 'swatted' classes in the HTML and CSS.
+*
 */
+
 function whack(event) {
-  // TODO: Write your code here.
-  // call updateScore()
-  console.log("splat!");
   if (muted === 1) {
     document.getElementById('splat').play();
   };
   updateScore();
-  document.body.style.cursor = './assets/swatter-smack.png';
-  console.log('unsmacked');
+  document.getElementById("body").classList.toggle('swatter');
   setTimeout(() => {
-    document.body.style.cursor = './assets/swatter-smack.png';
-    console.log('unsmacked');
-  }, 250);
+    document.getElementById("body").classList.toggle('swatter');
+    }, 100);
   return points;
-}
+};
 
 /**
 *
 * Adds the 'click' event listeners to the moles. See the instructions
 * for an example on how to set event listeners using a for loop.
 */
+
 function setEventListeners(){
-  // TODO: Write your code here
   moles.forEach(mole => mole.addEventListener('click', whack));
   return moles;
-}
+};
 
 /**
 *
@@ -261,10 +250,11 @@ function setEventListeners(){
 * that a player has to click on the sprites.
 *
 */
+
 function setDuration(duration) {
   time = duration;
   return time;
-}
+};
 
 /**
 *
@@ -272,29 +262,45 @@ function setDuration(duration) {
 * timer using clearInterval. Returns "game stopped".
 *
 */
+
 function stopGame(){
   clearInterval(timer);
   return "game stopped";
-}
+};
+
+/**
+*
+* This function was added to read the information of the difficulty
+* selector. It can now adjust the delay between moles hiding.
+*
+*/
 
 function difficultySelect() {
   difficulty = selection.value;
-  console.log(`beginning game on ${difficulty}`);
-}
+};
+
+/**
+*
+* This function was added to make the mute button interactive. It will
+* start or stop the music based on the 'muted' variable, as well as
+* modify this global variable to change whether or not the 'splat'
+* sounds will be heard in the 'whack' event.
+*
+*/
 
 function mute() {
-    if (muted === 0) {
+  if (muted === 0) {
     muteButton.src = "./assets/speaker.png";
     document.getElementById('music').play();
     document.getElementById("music").loop = true;
     muted = muted + 2;
-} else if (muted === 1) {
+  } else if (muted === 1) {
     muteButton.src = "./assets/mute.png";
     document.getElementById('music').pause();
-} else {
+  } else {
   muted = 1;
   muteButton.src = "./assets/speaker.png";
-}
+  };
   muted = muted - 1;
 };
 
@@ -312,12 +318,13 @@ function startGame(){
   startTimer();
   difficultySelect();
   return "game started";
-}
+};
 
 startButton.addEventListener("click", startGame);
 
 // Please do not modify the code below.
-// Used for testing purposes.
+// Used for testing purposes, and provided with the starter code.
+
 window.randomInteger = randomInteger;
 window.chooseHole = chooseHole;
 window.setDelay = setDelay;

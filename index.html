@@ -2,13 +2,16 @@
   <head>
     <link rel="stylesheet" href="./src/styles.css">
   </head>
-  <body>
+  <!-- Body has classes added to toggle pointer options -->
+  <body class="swatted swatter" id="body">
     <header>
+       <!-- Title and mute button are now grouped in the header. -->
       <h1 id="title">
         Mosquito Massacre <img class="mute" src="./assets/mute.png" alt="click to enable sound" onclick="mute()">
       </h1>
       </header>
     <div>
+       <!-- Two sound options are added here - background music and successful splats on hits. -->
       <audio id="music">
         <source src="/assets/molesong.mp3" type="audio/mpeg">
       </audio>
@@ -16,6 +19,7 @@
         <source src="/assets/splat.mp3" type="audio/mpeg">
       </audio>
       <div>
+         <!-- This dropdown was added to modify difficulty. -->
         <h2>Select your difficulty and click <button id="start">start</button> to begin!</h2>
       </div>
       <div class="selection">
@@ -34,6 +38,7 @@
           <h2><span id="timer">0</span> SECONDS LEFT.</h2>
       </div>
     </div>
+     <!-- Moles and holes have been duplicated to create a 3x3 grid. -->
     <div class="grid" id="grid">
       <div id="hole0" class="hole">
         <div id="mole0" class="mole"></div>
@@ -62,7 +67,6 @@
       <div id="hole8" class="hole">
         <div id="mole8" class="mole"></div>
       </div>
-      <!--TODO: Add the missing holes and moles. -->
     </div>
     <script src="./src/index.js"></script>
   </body>

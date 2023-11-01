@@ -1,6 +1,15 @@
-* {
+/* The first two listed classes allow the cursor to animate when successfully hitting a mosquito.
+See "function whack(event)" in the index.js file to see how the classes are toggled. */
+
+.swatted {
+  cursor: url('../assets/swatter-smack.png'), pointer;
+}
+
+.swatter {
   cursor: url('../assets/swatter.png'), pointer;
-} 
+}
+
+/* Background was modified here from the starter file to include a swamp, a more fitting home. */
 
 html {
   background: url('../assets/background.jpg') no-repeat center center fixed;
@@ -12,6 +21,9 @@ html {
   z-index:0;
   overflow: hidden;
 }
+
+/* Header has been added and formatted here to allow the title and mute button to sit in-line.
+Images and h1 elements have fonts modified to be a bit ~spookier~ and sized appropriately. */
 
 header {
   display: flex;
@@ -31,6 +43,8 @@ header img {
   width: 50px;
 }
 
+/* Following text has been formatted to match the black and red text above. */
+
 h2 {
   text-align: center;
   font-size: 40px;
@@ -49,6 +63,10 @@ h2 {
 #timer{
     color: darkred;
 }
+
+/* The grid, hole, and mole classes are utiized to align the interactive objects in a grid.
+The original class names have been kept to reflect correctly for testing, but they could be
+changed to more accurately reflect their new designs (such as cloud and skeeter). */
 
 .grid {
   width: 600px;
@@ -84,15 +102,15 @@ h2 {
   top: 100%;
   width: 100%;
   height: 100%;
-  /*transition: transform 0.5s;*/
   transition: all 1s;
   pointer-events:auto;
 }
 
 .hole.show .mole {
   top: -35%;
-  /*transform: scale(1.1);*/
 }
+
+/* A dropdown menu has been added and formatted here to be centered with the rest of the body. */
 
 select {
   display: block;
