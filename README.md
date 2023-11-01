@@ -8,7 +8,8 @@ This is my Capstone for my Web Development course - a Whack-a-Mole game! Here is
 
 |Version|Description|
 |------|------|
-| Version 1.0 **(CURRENT)** | Fully updated `README.md` provided as well as several notes added in the `index.html`, `index.js`, and `styles.css` files. Final additions to the code includes updated tags and scripts to allow the cursor to animate upon a successful mosquito hit. |
+| Version 1.01 **(CURRENT)** | Corrected the sound issue on GitHub deployment, added a title to the page, made minor adjustments to `README.md`|
+| Version 1.0 | Fully updated `README.md` provided as well as several notes added in the `index.html`, `index.js`, and `styles.css` files. Final additions to the code includes updated tags and scripts to allow the cursor to animate upon a successful mosquito hit. |
 | Version 0.9 | Separated `README.md` from `project-guide.md` and added a brief description, added music from the starter files, a splat sound effect on successful hits, gif versions of the original clouds, and moved everything remaining and unused into `assets/backup`. |
 | Version 0.8 | Changed "Whack-a-Mole" game into a "Mosquito Massacre," changed the associated graphics for the each item (moles, holes, mallet, background), and modified the CSS to reflect these changes. |
 | Version 0.7 | Followed directions in the original `README.md`, filled out `index.html`, `index.js`, and `styles.css` to have basic working game named "Gentry's Bonk Express." |
