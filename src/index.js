@@ -4,12 +4,16 @@ const startButton = document.querySelector('#start');
 // TODO: Add the missing query selectors:
 const score = document.querySelector('#score'); // Use querySelector() to get the score element
 const timerDisplay = document.querySelector('#timer'); // use querySelector() to get the timer element.
+const selection = document.querySelector('#difficulty');
+const muteButton = document.querySelector('.mute');
+
 
 let time = 0;
 let timer;
 let lastHole = 0;
 let points = 0;
-let difficulty = "hard";
+let difficulty = "easy";
+let muted = 0
 
 /**
  * Generates a random integer within a range.
@@ -226,8 +230,17 @@ function startTimer() {
 function whack(event) {
   // TODO: Write your code here.
   // call updateScore()
-  console.log("Ha, gotteem!");
+  console.log("splat!");
+  if (muted === 1) {
+    document.getElementById('splat').play();
+  };
   updateScore();
+  document.body.style.cursor = './assets/swatter-smack.png';
+  console.log('unsmacked');
+  setTimeout(() => {
+    document.body.style.cursor = './assets/swatter-smack.png';
+    console.log('unsmacked');
+  }, 250);
   return points;
 }
 
@@ -260,10 +273,30 @@ function setDuration(duration) {
 *
 */
 function stopGame(){
-  // stopAudio(song);  //optional
   clearInterval(timer);
   return "game stopped";
 }
+
+function difficultySelect() {
+  difficulty = selection.value;
+  console.log(`beginning game on ${difficulty}`);
+}
+
+function mute() {
+    if (muted === 0) {
+    muteButton.src = "./assets/speaker.png";
+    document.getElementById('music').play();
+    document.getElementById("music").loop = true;
+    muted = muted + 2;
+} else if (muted === 1) {
+    muteButton.src = "./assets/mute.png";
+    document.getElementById('music').pause();
+} else {
+  muted = 1;
+  muteButton.src = "./assets/speaker.png";
+}
+  muted = muted - 1;
+};
 
 /**
 *
@@ -277,11 +310,11 @@ function startGame(){
   clearScore();
   setEventListeners();
   startTimer();
+  difficultySelect();
   return "game started";
 }
 
 startButton.addEventListener("click", startGame);
-
 
 // Please do not modify the code below.
 // Used for testing purposes.

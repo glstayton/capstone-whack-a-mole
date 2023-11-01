@@ -3,19 +3,38 @@
     <link rel="stylesheet" href="./src/styles.css">
   </head>
   <body>
-    <h1 id="title">Mosquito Massacre</h1>
+    <header>
+      <h1 id="title">
+        Mosquito Massacre <img class="mute" src="./assets/mute.png" alt="click to enable sound" onclick="mute()">
+      </h1>
+      </header>
     <div>
+      <audio id="music">
+        <source src="/assets/molesong.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="splat">
+        <source src="/assets/splat.mp3" type="audio/mpeg">
+      </audio>
       <div>
-        <h2>Click <button id="start">start</button> to begin!</h2>
+        <h2>Select your difficulty and click <button id="start">start</button> to begin!</h2>
+      </div>
+      <div class="selection">
+        <form>
+          <select id="difficulty" name="difficulty">
+          <option value="easy">easy breezy</option>
+          <option value="medium">now we're talking</option>
+          <option value="hard">god mode</option>
+        </select>
+        </form>
       </div>
       <div>
-        <h2>score: <span id="score">0</span></h2>
+        <h2>SCORE: <span id="score">0</span></h2>
       </div>
       <div>
-          <h2><span id="timer">0</span> seconds left.</h2>
+          <h2><span id="timer">0</span> SECONDS LEFT.</h2>
       </div>
     </div>
-    <div class="grid">
+    <div class="grid" id="grid">
       <div id="hole0" class="hole">
         <div id="mole0" class="mole"></div>
       </div>
